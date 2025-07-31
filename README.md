@@ -9,10 +9,9 @@
   <br><br>
 </p>
 
-> **📌 Note:** This repository contains a **preliminary implementation** of the framework described in our upcoming research paper: _**"Efficient Image Colorization for Low-Power Devices via Spectrally Normalized GAN with scSE Attention and EfficientNet Encoder"**_.   
-> This version serves as a **demo**, omitting components like scSE attention and employing a simplified loss function compared to the final release.
+> **📌 Note:**  
+> This repository contains a **preliminary implementation** of the framework described in our upcoming research paper: _**"Efficient Image Colorization for Low-Power Devices via Spectrally Normalized GAN with scSE Attention and EfficientNet Encoder"**_. This version serves as a **demo**, omitting components like scSE attention and employing a simplified loss function compared to the final release.
 
----
 
 ## 🔍 Overview
 
@@ -25,7 +24,6 @@ It is useful in applications such as:
 While state-of-the-art colorization models often deliver high-quality results, they are typically **orders of magnitude larger** than what low-power or embedded systems can handle.  
 EffiColorizer addresses this limitation by offering a **highly compact yet effective architecture**, capable of producing vivid and semantically accurate colorizations in real time.
 
----
 
 ## 🚀 Key Contributions (Demo Version)
 
@@ -33,7 +31,6 @@ EffiColorizer addresses this limitation by offering a **highly compact yet effec
 - **EfficientNet-B3 encoder integrated into U-Net generator** for high semantic understanding with minimal computational cost.
 - **Novel hybrid training strategy** that alternates between joint and decoupled generator/discriminator updates.
 
----
 
 ## 🧠 Architecture Summary
 
@@ -45,7 +42,6 @@ EffiColorizer addresses this limitation by offering a **highly compact yet effec
 - **Evaluation Data:** 4,000 validation images from COCO
 - **Training Epochs:** ~100
 
----
 
 ## ⚙️ Getting Started
 
@@ -80,7 +76,6 @@ conda env list
 3. Ensure that the Jupyter kernel is set to `EffiColorizer-pytorch`.
 4. Run the cells sequentially to visualize colorization results on sample images.
 
----
 
 ## 📊 Benchmark Results
 
@@ -100,6 +95,7 @@ Among these, FID is particularly important as it strongly correlates with the vi
 
 Our method achieves a **2.4× improvement** in FID compared to the baseline.
 
+
 ### Computational Efficiency
 
 We compare both models in terms of FLOPs and parameter count.  
@@ -112,7 +108,6 @@ To ensure a fair comparison, we normalize FLOPs to a 256×256 input resolution, 
 
 EffiColorizer requires approximately **10.8× fewer FLOPs** and **2.4× fewer parameters** than the baseline model, while still achieving **superior performance across all quality metrics**.
 
----
 
 ## 📄 Citation
 
@@ -121,7 +116,6 @@ Citation details will be provided here upon publication.
 
 For early academic inquiries, feel free to reach out.
 
----
 
 ## ✉️ Contact
 
