@@ -111,14 +111,10 @@ EffiColorizer requires approximately **10.8× fewer FLOPs** and **2.4× fewer pa
 
 ## 📄 Citation
 
-This code corresponds to a paper that is currently under preparation.  
 Citation details will be provided here upon publication.
-
-For early academic inquiries, feel free to reach out.
 
 
 ## ✉️ Contact
 
 Interested in collaborating, extending this framework, or using it in your own work?  
 Feel free to reach out via [GitHub Issues](https://github.com/aref-mousavi-eng/EffiColorizer/issues).  
-Feedback and suggestions are welcome.
