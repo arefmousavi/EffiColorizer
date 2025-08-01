@@ -9,72 +9,60 @@
   <br><br>
 </p>
 
-> **📌 Note:**  
-> This repository contains a **preliminary implementation** of the framework described in our upcoming research paper: _**"Efficient Image Colorization for Low-Power Devices via Spectrally Normalized GAN with scSE Attention and EfficientNet Encoder"**_. This version serves as a **demo**, omitting components like scSE attention and employing a simplified loss function compared to the final release.
+> **📌 Note:** This repository provides a **demo implementation** of our upcoming paper: _**"Efficient Image Colorization for Low-Power Devices via Spectrally Normalized GAN with scSE Attention and EfficientNet Encoder"**_. It omits some components (e.g., scSE attention) and uses a simplified loss function compared to the final version.
 
 
 ## 🔍 Overview
 
-EffiColorizer is a lightweight, real-time image colorization framework optimized for **mobile and embedded platforms**, and implemented in **PyTorch**.  
-It is useful in applications such as:
-- Enhancing outputs of **night-vision IR and industrial monochromatic cameras** for visualization or downstream computer vision tasks.
-- **On-device colorization** of historical photos, avoiding cloud-based processing — improving latency, cost-efficiency, and privacy.
+**EffiColorizer** is a lightweight, real-time image colorization framework built with **PyTorch** and optimized for **mobile and embedded devices**.
 
+It supports applications such as:
+- Colorizing outputs from **night-vision and industrial monochrome cameras** for better visualization or use in downstream vision tasks
+- **On-device** colorization of historical images, avoiding cloud processing to improve latency, cost-efficiency, and privacy
 
-While state-of-the-art colorization models often deliver high-quality results, they are typically **orders of magnitude larger** than what low-power or embedded systems can handle.  
-EffiColorizer addresses this limitation by offering a **highly compact yet effective architecture**, capable of producing vivid and semantically accurate colorizations in real time.
+While state-of-the-art models are often too large for low-power systems, EffiColorizer offers a **highly compact yet accurate** alternative for vivid, semantically correct colorizations in real time.
 
 
 ## 🚀 Key Contributions (Demo Version)
 
-- **Spectrally Normalized GAN** for stable adversarial training.
-- **EfficientNet-B3 encoder integrated into U-Net generator** for high semantic understanding with minimal computational cost.
-- **Novel hybrid training strategy** that alternates between joint and decoupled generator/discriminator updates.
+- **Spectrally Normalized GAN** for stable adversarial training
+- **EfficientNet-B3 encoder integrated into U-Net generator** for high semantic understanding with minimal computational cost
+- **Novel hybrid training strategy** that alternates between joint and decoupled generator/discriminator updates
 
 
 ## 🧠 Architecture Summary
 
-- **Generator:** U-Net with EfficientNet-B3 encoder
-- **Discriminator:** PatchGAN-based
-- **Input Resolution:** 320×320
-- **Color Space:** CIELAB (predicts a and b channels only)
-- **Training Data:** 16,000 grayscale-color pairs from COCO
-- **Evaluation Data:** 4,000 validation images from COCO
-- **Training Epochs:** ~100
+- **Generator:** U-Net with EfficientNet-B3 encoder (predicts a/b in CIELAB space)  
+- **Discriminator:** PatchGAN  
+- **Input:** 320×320 grayscale  
+- **Data:** 16k train / 4k val image pairs from COCO
+- **Training:** ~100 epochs
 
 
 ## ⚙️ Getting Started
 
 ### Clone and install dependencies
 
-Open a terminal and run the following commands:
+### Setup
 
 ```bash
-# Clone the repository
 git clone https://github.com/aref-mousavi-eng/EffiColorizer.git
-
-# Create a conda environment from the environment.yml file
+cd EffiColorizer
 conda env create -f environment.yml
-
-# Check that the environment was created successfully.
-# The environment 'EffiColorizer-pytorch' should appear in the list.
-conda env list
+conda env list  # Verify 'EffiColorizer-pytorch' exists
 ```
 
 ### Training
 
-1. Download a dataset of your choice (e.g., [COCO](https://cocodataset.org)).
-2. Open the `training.ipynb` notebook.
-3. Ensure that the Jupyter kernel is set to `EffiColorizer-pytorch`.
-4. Update the dataset path, and execute the cells sequentially.
-5. (Optional) Adjust training hyperparameters as needed.
+1. Download a dataset (e.g., [COCO](https://cocodataset.org)).
+2. Open `training.ipynb` and set the kernel to `EffiColorizer-pytorch`.
+3. Update the dataset path and run the cells.
 
 ### Evaluation
 
-1. Download the pretrained weights from [this link](https://drive.google.com/drive/folders/1gCsAj0PQFZwtKqX3hk4UOPakIZu9l4yL?usp=sharing) and place them in the same directory as `evaluation.ipynb`.
-2. Open the `evaluation.ipynb` notebook.
-3. Ensure that the Jupyter kernel is set to `EffiColorizer-pytorch`.
-4. Run the cells sequentially to visualize colorization results on sample images.
+1. Download pretrained weights from [this link](https://drive.google.com/drive/folders/1gCsAj0PQFZwtKqX3hk4UOPakIZu9l4yL?usp=sharing) and place them in the root directory.
+2. Launch `evaluation.ipynb` using the `EffiColorizer-pytorch` kernel.
+3. Run the cells to visualize colorization results on sample images.
 
 
 ## 📊 Benchmark Results
@@ -84,34 +72,35 @@ While not a state-of-the-art model, the baseline is lightweight and widely adopt
 
 ### Quality Evaluation
 
-
-Image quality is evaluated using four standard metrics: FID (for perceptual realism), SSIM and PSNR (for structure and pixel-level fidelity, respectively), and LPIPS (for learned perceptual similarity).   
-Among these, FID is particularly important as it strongly correlates with the visual quality of generated images.
+- Image quality is evaluated using:
+  - **FID** (distributional realism, most perceptually aligned)
+  - **SSIM** (structural fidelity)
+  - **PSNR** (pixel-level accuracy)
+  - **LPIPS** (deep perceptual similarity)
+- FID is the most indicative of visual quality
+- Our method achieves a **2.4× improvement** in FID over the baseline
 
 | Model                        | FID ↓    | SSIM ↑    | PSNR ↑       | LPIPS ↓   |
 |-----------------------------|----------|-----------|--------------|-----------|
 | **EffiColorizer (Ours)**    | **9.29** | **0.922** | **24.93 dB** | **0.111** |
 | Colorful Image Colorization | 22.50    | 0.911     | 21.21 dB     | 0.181     |
 
-Our method achieves a **2.4× improvement** in FID compared to the baseline.
-
-
 ### Computational Efficiency
 
-We compare both models in terms of FLOPs and parameter count.  
-To ensure a fair comparison, we normalize FLOPs to a 256×256 input resolution, as the original input sizes differ (EffiColorizer: **320×320**, baseline: **256×256**). FLOP values are reported per image.
+- Models compared based on FLOPs and parameter count.
+- FLOPs normalized to 256×256 input resolution for fair comparison (EffiColorizer uses 320×320, baseline 256×256).
+- FLOPs reported per image.
+- EffiColorizer requires **~10.8× fewer FLOPs** and **2.4× fewer parameters** than baseline.
 
 | Model                        | Params ↓ | FLOPs @ 256×256 ↓ |
 |-----------------------------|----------|--------------------|
 | **EffiColorizer (Ours)**    | **13.16 M** | **~3.87 GFLOPs**   |
 | Colorful Image Colorization | 32.24 M  | 41.78 GFLOPs       |
 
-EffiColorizer requires approximately **10.8× fewer FLOPs** and **2.4× fewer parameters** than the baseline model, while still achieving **superior performance across all quality metrics**.
-
-
 ## 📄 Citation
 
-Citation details will be provided here upon publication.
+Citation details will be provided upon publication.  
+Please check back later for the official reference.
 
 
 ## ✉️ Contact
