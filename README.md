@@ -9,8 +9,7 @@
   <br><br>
 </p>
 
-> **📌 Note:** This repository provides a **demo implementation** of our upcoming paper: _**"Efficient Image Colorization for Low-Power Devices via Spectrally Normalized GAN with scSE Attention and EfficientNet Encoder"**_. It omits some components (e.g., scSE attention) and uses a simplified loss function compared to the final version.
-
+> ⚠️ This is a **demo implementation** with some components (e.g., scSE attention) omitted and a simplified loss function. It corresponds to an early version of our upcoming paper on efficient image colorization for low-power devices.
 
 ## 🔍 Overview
 
