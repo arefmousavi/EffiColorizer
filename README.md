@@ -1,7 +1,6 @@
 # EffiColorizer: An Efficient Image Colorization Framework for Low-Power Devices
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![Paper Coming Soon](https://img.shields.io/badge/Paper-coming%20soon-lightgray)
 
 <p align="center">
   <img src="images/teaser.png" alt="colorization_preview" style="max-width: 100%; height: auto;" />
@@ -9,14 +8,13 @@
   <br><br>
 </p>
 
-> ⚠️ This is a **demo implementation** with some components (e.g., scSE attention) omitted and a simplified loss function. It corresponds to an early version of our upcoming paper on efficient image colorization for low-power devices.
 
 ## 🔍 Overview
 
 **EffiColorizer** is a lightweight, real-time image colorization framework built with **PyTorch** and optimized for **mobile and embedded devices**.
 
 It supports applications such as:
-- Colorizing outputs from **night-vision and industrial monochrome cameras** for better visualization or use in downstream vision tasks
+- Colorizing outputs from **monochrome cameras** for better visualization or use in downstream vision tasks
 - **On-device** colorization of historical images, avoiding cloud processing to improve latency, cost-efficiency, and privacy
 
 While state-of-the-art models are often too large for low-power systems, EffiColorizer offers a **highly compact yet accurate** alternative for vivid, semantically correct colorizations in real time.
@@ -59,7 +57,7 @@ conda env list  # Verify 'EffiColorizer-pytorch' exists
 
 ### Evaluation
 
-1. Download pretrained weights from [this link](https://drive.google.com/drive/folders/1gCsAj0PQFZwtKqX3hk4UOPakIZu9l4yL?usp=sharing) and place them in the root directory.
+1. Download pretrained weights from [this link](https://drive.google.com/file/d/1pM_Ub6jtVrNU_Ikpnxj-k4KlKdV_mdXC/view?usp=drive_link) and place them in the root directory.
 2. Launch `evaluation.ipynb` using the `EffiColorizer-pytorch` kernel.
 3. Run the cells to visualize colorization results on sample images.
 
@@ -96,13 +94,3 @@ While not a state-of-the-art model, the baseline is lightweight and widely adopt
 | **EffiColorizer (Ours)**    | **13.16 M** | **~3.87 GFLOPs**   |
 | Colorful Image Colorization | 32.24 M  | 41.78 GFLOPs       |
 
-## 📄 Citation
-
-Citation details will be provided upon publication.  
-Please check back later for the official reference.
-
-
-## ✉️ Contact
-
-Interested in collaborating, extending this framework, or using it in your own work?  
-Feel free to reach out via [GitHub Issues](https://github.com/aref-mousavi-eng/EffiColorizer/issues).  
