@@ -20,7 +20,7 @@ It supports applications such as:
 While state-of-the-art models are often too large for low-power systems, EffiColorizer offers a **highly compact yet accurate** alternative for vivid, semantically correct colorizations in real time.
 
 
-## 🚀 Key Contributions (Demo Version)
+## 🚀 Key Contributions
 
 - **Spectrally Normalized GAN** for stable adversarial training
 - **EfficientNet-B3 encoder integrated into U-Net generator** for high semantic understanding with minimal computational cost
